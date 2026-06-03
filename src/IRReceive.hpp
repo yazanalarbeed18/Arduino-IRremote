@@ -311,7 +311,7 @@ ISR()
  * @param aEnableLEDFeedback if true / ENABLE_LED_FEEDBACK, then let the feedback led blink on receiving IR signal
  * @param aFeedbackLEDPin if 0xFF, then take board specific LED_BUILTIN pin if it is defined as macro
  */
-void IRrecv::begin(uint_fast8_t aReceivePin, bool aEnableLEDFeedback, uint_fast8_t aFeedbackLEDPin) {
+inline bool IRrecv::begin(uint_fast8_t aReceivePin, bool aEnableLEDFeedback , uint_fast8_t aFeedbackLEDPin  ) {
 
     setReceivePin(aReceivePin);
 #if defined(LED_RECEIVE_FEEDBACK_CODE)
@@ -326,6 +326,7 @@ void IRrecv::begin(uint_fast8_t aReceivePin, bool aEnableLEDFeedback, uint_fast8
     pinModeFast(_IR_TIMING_TEST_PIN, OUTPUT);
 #endif
     start();
+    return true;
 }
 
 /**
