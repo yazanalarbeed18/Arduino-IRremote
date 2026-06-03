@@ -239,7 +239,7 @@ public:
     /*
      * Stream like API
      */
-    void begin(uint_fast8_t aReceivePin, bool aEnableLEDFeedback = false, uint_fast8_t aFeedbackLEDPin =
+    bool begin(uint_fast8_t aReceivePin, bool aEnableLEDFeedback = false, uint_fast8_t aFeedbackLEDPin =
     USE_DEFAULT_FEEDBACK_LED_PIN);
     void start();
     void enableIRIn(); // alias for start
@@ -525,10 +525,10 @@ public:
     void begin(uint_fast8_t aFeedbackLEDPin);
 #else
     IRsend(uint_fast8_t aSendPin);
-    void begin(uint_fast8_t aSendPin);
+    bool begin(uint_fast8_t aSendPin);
     void setSendPin(uint_fast8_t aSendPin); // required if we use IRsend() as constructor
 #endif
-    void begin(uint_fast8_t aSendPin, uint_fast8_t aFeedbackLEDPin); // aFeedbackLEDPin is by default USE_DEFAULT_FEEDBACK_LED_PIN
+    bool begin(uint_fast8_t aSendPin, uint_fast8_t aFeedbackLEDPin); // aFeedbackLEDPin is by default USE_DEFAULT_FEEDBACK_LED_PIN
     void begin(uint_fast8_t aSendPin, bool aEnableLEDFeedback, uint_fast8_t aFeedbackLEDPin)
 #  if !defined (DOXYGEN)
             __attribute__ ((deprecated ("Use begin(aSendPin, aFeedbackLEDPin) instead.")));
